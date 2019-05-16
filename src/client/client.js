@@ -3,4 +3,7 @@ import ReactDOM from 'react-dom';
 
 import App from './App';
 
-ReactDOM.hydrate(<App />, document.querySelector('#root'));
+ReactDOM.hydrate(
+	<App data={window.__INITIAL_DATA__} />,
+	document.querySelector('#root')
+);

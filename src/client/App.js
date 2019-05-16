@@ -1,9 +1,10 @@
 import React from 'react';
 
-const App = () => {
+const App = props => {
+	console.log(props);
 	return (
 		<React.Fragment>
-			<h1>App Component</h1>
+			<h1>{props.data}</h1>
 		</React.Fragment>
 	);
 };
