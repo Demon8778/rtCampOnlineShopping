@@ -1,0 +1,11 @@
+{
+  "name": "rtcamp_online_shopping",
+  "version": "1.0.0",
+  "description": "Demo project to showcase skills on ReactJS",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Kirankumar Ahir",
+  "license": "ISC"
+}
