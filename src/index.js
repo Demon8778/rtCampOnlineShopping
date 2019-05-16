@@ -2,8 +2,20 @@ import express from 'express';
 
 const app = express();
 
+app.use(express.static('public'));
+
 app.get('/', (req, res) => {
-	res.send('Its working!!');
+	const content = `
+		<html>
+			<head></head>
+			<body>
+				
+				<div id="root"></div>
+				<script src="bundle.js"></script>
+			</body>
+		</html>
+	`;
+	res.send(content);
 });
 
 app.listen(3000, () => {
