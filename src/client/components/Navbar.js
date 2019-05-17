@@ -1,10 +1,13 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 // import 'bootstrap/dist/css/bootstrap.min.css';
 
 export default () => {
 	return (
-		<div>
-			<button className="btn btn-primary">Click Me!</button>
-		</div>
+		<nav className="navbar navbar-dark">
+			<Link to="/">
+				<img alt="brand-logo" className="navbar-brand" />
+			</Link>
+		</nav>
 	);
 };

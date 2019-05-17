@@ -3,7 +3,9 @@ import React from 'react';
 import { renderToString } from 'react-dom/server';
 import serialize from 'serialize-javascript';
 import StyleContext from 'isomorphic-style-loader/StyleContext';
+import { StaticRouter } from 'react-router-dom';
 
+import Routes from './client/Routes';
 import App from './client/App';
 import { PrdouctProvider } from './client/context';
 import { storeProducts } from './client/products';
@@ -20,11 +22,13 @@ app.get('*', (req, res) => {
 		styles.forEach(style => css.add(style._getCss()));
 
 	const app = renderToString(
-		// <PrdouctProvider>
-		<StyleContext.Provider value={{ insertCss }}>
-			<App />
-		</StyleContext.Provider>
-		// </PrdouctProvider>
+		<PrdouctProvider>
+			<StyleContext.Provider value={{ insertCss }}>
+				<StaticRouter location={req.url} context={{}}>
+					<Routes />
+				</StaticRouter>
+			</StyleContext.Provider>
+		</PrdouctProvider>
 	);
 	const content = `
 		<!DOCTYPE html>
