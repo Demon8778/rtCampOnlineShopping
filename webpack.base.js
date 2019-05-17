@@ -13,12 +13,13 @@ module.exports = {
 								{ targets: { browsers: ['last 2 versions'] } }
 							],
 							'@babel/preset-react'
-						]
+						],
+						plugins: ['@babel/plugin-proposal-class-properties']
 					}
 				}
 			},
 			{
-				test: /\.scss$/,
+				test: /\.(scss|css)$/,
 				use: ['isomorphic-style-loader', 'css-loader', 'sass-loader']
 			}
 		]

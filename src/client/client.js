@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import StyleContext from 'isomorphic-style-loader/StyleContext';
+import { PrdouctProvider } from './context';
 
 import App from './App';
 
@@ -10,8 +11,10 @@ const insertCss = (...styles) => {
 };
 
 ReactDOM.hydrate(
-	<StyleContext.Provider value={{ insertCss }}>
-		<App data={window.__INITIAL_DATA__} />
-	</StyleContext.Provider>,
+	<PrdouctProvider>
+		<StyleContext.Provider value={{ insertCss }}>
+			<App />
+		</StyleContext.Provider>
+	</PrdouctProvider>,
 	document.querySelector('#root')
 );
