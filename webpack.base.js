@@ -16,6 +16,10 @@ module.exports = {
 						]
 					}
 				}
+			},
+			{
+				test: /\.scss$/,
+				use: ['isomorphic-style-loader', 'css-loader', 'sass-loader']
 			}
 		]
 	}
