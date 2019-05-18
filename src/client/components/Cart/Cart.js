@@ -2,8 +2,10 @@ import React, { Component } from 'react';
 
 import { ProductConsumer } from '../../context';
 import EmptyCart from './EmptyCart';
+import CartColumns from './CartColumns';
 
 export default class Cart extends Component {
+	componentDidUpdate() {}
 	render() {
 		return (
 			<ProductConsumer>
@@ -12,12 +14,11 @@ export default class Cart extends Component {
 					if (cart.length > 0) {
 						return (
 							<React.Fragment>
-								<p>There are some items in the cart</p>
+								<CartColumns />
 							</React.Fragment>
 						);
-					} else {
-						return <EmptyCart />;
 					}
+					return <EmptyCart />;
 				}}
 			</ProductConsumer>
 		);

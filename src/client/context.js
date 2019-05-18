@@ -2,20 +2,18 @@ import React, { Component } from 'react';
 import window from 'global/window';
 
 const ProductContext = React.createContext();
-
+import { storeProducts } from './products';
 //Provider and Consumer logic
 
 class PrdouctProvider extends Component {
 	constructor(props) {
 		super(props);
-		// console.log(this.props);
 	}
+
 	state = {
-		products: this.props.products,
-		detailProduct: null,
+		products: storeProducts,
 		cart: [],
-		modalOpen: false,
-		cartTotal: 0
+		detailProduct: null
 	};
 
 	getItem = id => {
@@ -24,7 +22,6 @@ class PrdouctProvider extends Component {
 	};
 
 	handleDetail = id => {
-		console.log(id);
 		const product = this.getItem(id);
 		this.setState(() => {
 			return {
@@ -32,11 +29,36 @@ class PrdouctProvider extends Component {
 			};
 		});
 	};
+
+	addItemToCart = id => {
+		console.log(id);
+		const product = this.getItem(id);
+		product.inCart = true;
+		product.count = 1;
+		const price = product.price;
+		product.total = price;
+
+		this.setState(
+			() => {
+				return {
+					cart: [...this.state.cart, product]
+				};
+			},
+			() => {
+				console.log('Do something');
+			}
+		);
+	};
+
 	render() {
 		// console.log(this.state.products);
 		return (
 			<ProductContext.Provider
-				value={{ ...this.state, handleDetail: this.handleDetail }}
+				value={{
+					...this.state,
+					handleDetail: this.handleDetail,
+					addItemToCart: this.addItemToCart
+				}}
 			>
 				{this.props.children}
 			</ProductContext.Provider>

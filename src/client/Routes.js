@@ -4,7 +4,7 @@ import { Route, Switch } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import ProductList from './components/ProductList';
 import ProductDetails from './components/ProductDetails';
-import Cart from './components/Cart.js/Cart';
+import Cart from './components/Cart/Cart';
 
 export default () => {
 	return (
