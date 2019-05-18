@@ -4,6 +4,7 @@ import { Route, Switch } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import ProductList from './components/ProductList';
 import ProductDetails from './components/ProductDetails';
+import Cart from './components/Cart.js/Cart';
 
 export default () => {
 	return (
@@ -12,6 +13,7 @@ export default () => {
 			<Switch>
 				<Route exact path="/" component={ProductList} />
 				<Route path="/details" component={ProductDetails} />
+				<Route path="/cart" component={Cart} />
 			</Switch>
 		</React.Fragment>
 	);
