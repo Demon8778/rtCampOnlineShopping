@@ -13,7 +13,8 @@ class PrdouctProvider extends Component {
 	state = {
 		products: storeProducts,
 		cart: [],
-		detailProduct: null
+		detailProduct: null,
+		cartTotal: 0
 	};
 
 	getItem = id => {
@@ -45,19 +46,54 @@ class PrdouctProvider extends Component {
 				};
 			},
 			() => {
-				console.log('Do something');
+				this.addTotals();
+			}
+		);
+	};
+
+	addTotals = () => {
+		console.log('addTotals');
+		let total = 0;
+		this.state.cart.forEach(product => (total += product.total));
+
+		this.setState(() => {
+			return {
+				cartTotal: total
+			};
+		});
+	};
+
+	removeItem = id => {
+		console.log('removeItem');
+		let tempCart = [...this.state.cart];
+		const product = this.getItem(id);
+
+		product.inCart = false;
+		product.count = 0;
+		product.total = 0;
+
+		tempCart = tempCart.filter(product => product.id !== id);
+
+		this.setState(
+			() => {
+				return {
+					cart: tempCart
+				};
+			},
+			() => {
+				this.addTotals();
 			}
 		);
 	};
 
 	render() {
-		// console.log(this.state.products);
 		return (
 			<ProductContext.Provider
 				value={{
 					...this.state,
 					handleDetail: this.handleDetail,
-					addItemToCart: this.addItemToCart
+					addItemToCart: this.addItemToCart,
+					removeItem: this.removeItem
 				}}
 			>
 				{this.props.children}

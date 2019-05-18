@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { ProductConsumer } from '../../context';
 import EmptyCart from './EmptyCart';
 import CartColumns from './CartColumns';
+import CartList from './CartList';
 
 export default class Cart extends Component {
 	componentDidUpdate() {}
@@ -15,6 +16,7 @@ export default class Cart extends Component {
 						return (
 							<React.Fragment>
 								<CartColumns />
+								<CartList value={value} />
 							</React.Fragment>
 						);
 					}
