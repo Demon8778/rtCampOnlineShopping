@@ -21,6 +21,13 @@ module.exports = {
 			{
 				test: /\.(scss|css)$/,
 				use: ['isomorphic-style-loader', 'css-loader', 'sass-loader']
+			},
+			{
+				test: /\.svg$/,
+				loader: 'url-loader',
+				options: {
+					limit: 10000
+				}
 			}
 		]
 	}

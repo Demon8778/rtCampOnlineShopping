@@ -11,10 +11,10 @@ const insertCss = (...styles) => {
 };
 
 ReactDOM.hydrate(
-	<PrdouctProvider>
-		<StyleContext.Provider value={{ insertCss }}>
+	<StyleContext.Provider value={{ insertCss }}>
+		<PrdouctProvider products={window.__INITIAL_DATA__}>
 			<App />
-		</StyleContext.Provider>
-	</PrdouctProvider>,
+		</PrdouctProvider>
+	</StyleContext.Provider>,
 	document.querySelector('#root')
 );

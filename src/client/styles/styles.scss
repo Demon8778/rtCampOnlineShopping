@@ -1,4 +1,68 @@
-$brand-color: blue;
-* {
-	color: $brand-color;
+$mainBlue: #2a2a72;
+$lightBlue: #009ffd;
+$mainWhite: #f3f3f3;
+$mainDark: #232528;
+$mainYellow: #ffa400;
+
+body {
+	background: $mainWhite;
+	color: $mainDark;
+}
+
+.navbar {
+	background: $mainBlue;
+	.nav-link {
+		color: $mainWhite;
+		font-size: 1.3rem;
+		text-transform: capitalize;
+	}
+	.btn-cart {
+		text-transform: capitalize;
+		font-size: 1.4rem;
+		background: transparent;
+		border: 0.05rem solid $mainYellow;
+		color: $mainYellow;
+		border-radius: 0.1rem;
+		padding: 0.2rem 0.5rem;
+		cursor: pointer;
+		margin: 0.2rem 0.5rem;
+		transition: all 0.005s ease-in-out;
+		&:hover {
+			background: $mainYellow;
+			color: $mainWhite;
+			border-color: $mainWhite;
+		}
+		&:focus {
+			outline: none;
+		}
+	}
+}
+
+.product {
+	.card {
+		border-color: transparent;
+	}
+
+	.card-footer {
+		background: transparent;
+		border-top: transparent;
+	}
+
+	.img-container {
+		position: relative;
+		overflow: hidden;
+	}
+
+	.cart-btn {
+		position: absolute;
+		bottom: 0;
+		right: 0;
+		padding: 0.2rem 0.4rem;
+		background: $lightBlue;
+		border: none;
+		color: $mainWhite;
+		&:hover {
+			color: $mainBlue;
+		}
+	}
 }

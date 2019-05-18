@@ -6,7 +6,6 @@ import StyleContext from 'isomorphic-style-loader/StyleContext';
 import { StaticRouter } from 'react-router-dom';
 
 import Routes from './client/Routes';
-import App from './client/App';
 import { PrdouctProvider } from './client/context';
 import { storeProducts } from './client/products';
 
@@ -22,19 +21,25 @@ app.get('*', (req, res) => {
 		styles.forEach(style => css.add(style._getCss()));
 
 	const app = renderToString(
-		<PrdouctProvider>
-			<StyleContext.Provider value={{ insertCss }}>
-				<StaticRouter location={req.url} context={{}}>
+		<StyleContext.Provider value={{ insertCss }}>
+			<StaticRouter location={req.url} context={{}}>
+				<PrdouctProvider products={storeProducts}>
 					<Routes />
-				</StaticRouter>
-			</StyleContext.Provider>
-		</PrdouctProvider>
+				</PrdouctProvider>
+			</StaticRouter>
+		</StyleContext.Provider>
 	);
 	const content = `
 		<!DOCTYPE html>
 		<html>
 			<head>
 				<title>rtCamp - Online Shopping</title>
+				<link
+					rel="stylesheet"
+					href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+					integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
+					crossorigin="anonymous"
+				/>
 				<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 				<style>${[...css].join('')}</style>
 			</head>

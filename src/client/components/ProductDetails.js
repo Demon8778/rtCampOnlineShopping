@@ -6,9 +6,24 @@ import { ProductConsumer } from '../context';
 export default class ProductDetails extends Component {
 	render() {
 		return (
-			<React.Fragment>
-				<h1>ProductDetails Component</h1>
-			</React.Fragment>
+			<ProductConsumer>
+				{value => {
+					const {
+						id,
+						company,
+						img,
+						info,
+						price,
+						title,
+						inCart
+					} = value.detailProduct;
+					return (
+						<div className="container">
+							<h1>{title}</h1>
+						</div>
+					);
+				}}
+			</ProductConsumer>
 		);
 	}
 }
