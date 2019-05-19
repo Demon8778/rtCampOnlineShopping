@@ -51,6 +51,48 @@ class PrdouctProvider extends Component {
 		);
 	};
 
+	increment = id => {
+		const tempCart = [...this.state.cart];
+		const product = tempCart.find(product => product.id === id);
+
+		product.count++;
+		product.total = product.price * product.count;
+
+		this.setState(
+			() => {
+				return {
+					cart: tempCart
+				};
+			},
+			() => {
+				this.addTotals();
+			}
+		);
+	};
+
+	decrement = id => {
+		const tempCart = [...this.state.cart];
+		const product = tempCart.find(product => product.id === id);
+
+		if (product.count === 1) {
+			this.removeItem(id);
+			return;
+		}
+		product.count--;
+		product.total = product.price * product.count;
+
+		this.setState(
+			() => {
+				return {
+					cart: tempCart
+				};
+			},
+			() => {
+				this.addTotals();
+			}
+		);
+	};
+
 	addTotals = () => {
 		console.log('addTotals');
 		let total = 0;
@@ -65,7 +107,9 @@ class PrdouctProvider extends Component {
 
 	removeItem = id => {
 		console.log('removeItem');
+
 		let tempCart = [...this.state.cart];
+
 		const product = this.getItem(id);
 
 		product.inCart = false;
@@ -93,7 +137,9 @@ class PrdouctProvider extends Component {
 					...this.state,
 					handleDetail: this.handleDetail,
 					addItemToCart: this.addItemToCart,
-					removeItem: this.removeItem
+					removeItem: this.removeItem,
+					increment: this.increment,
+					decrement: this.decrement
 				}}
 			>
 				{this.props.children}

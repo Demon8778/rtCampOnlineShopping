@@ -3,7 +3,7 @@ import React from 'react';
 export default ({ product, value }) => {
 	const { id, title, img, price, total, count } = product;
 	// console.log(value);
-	const { removeItem } = value;
+	const { removeItem, increment, decrement } = value;
 	return (
 		<div className="row my-3 text-capitalize text-center">
 			<div className="col-10 mx-auto col-lg-2">
@@ -22,7 +22,17 @@ export default ({ product, value }) => {
 				<span className="d-lg-none">Price : </span>
 				{price}
 			</div>
-			<div className="col-10 mx-auto col-lg-2">{count}</div>
+			<div className="col-10 mx-auto col-lg-2">
+				<div className="d-flex justify-content-center">
+					<span className="btn btn-black mx-1" onClick={() => decrement(id)}>
+						-
+					</span>
+					<span className="btn btn-black mx-1">{count}</span>
+					<span className="btn btn-black mx-1" onClick={() => increment(id)}>
+						+
+					</span>
+				</div>
+			</div>
 			<div className="col-10 mx-auto col-lg-2">
 				<div className="cart-icon" onClick={() => removeItem(id)}>
 					<i className="fas fa-trash" />

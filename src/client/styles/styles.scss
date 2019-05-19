@@ -72,3 +72,16 @@ body {
 	font-size: 1.2rem;
 	color: $mainYellow;
 }
+
+.btn-black {
+	background: transparent;
+	font-size: 1rem;
+	color: $mainDark;
+	border-radius: 0;
+	border: 0.1rem solid $mainDark;
+	&:hover {
+		cursor: pointer;
+		background: $mainDark;
+		color: $mainWhite;
+	}
+}
