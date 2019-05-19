@@ -5,6 +5,7 @@ import Navbar from './components/Navbar';
 import ProductList from './components/ProductList';
 import ProductDetails from './components/ProductDetails';
 import Cart from './components/Cart/Cart';
+import Modal from './components/Modal';
 
 export default () => {
 	return (
@@ -15,6 +16,7 @@ export default () => {
 				<Route path="/details" component={ProductDetails} />
 				<Route path="/cart" component={Cart} />
 			</Switch>
+			<Modal />
 		</React.Fragment>
 	);
 };

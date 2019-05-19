@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import window from 'global/window';
 
 const ProductContext = React.createContext();
-import { storeProducts } from './products';
+import { storeProducts, detailProduct } from './products';
 //Provider and Consumer logic
 
 class PrdouctProvider extends Component {
@@ -15,7 +15,9 @@ class PrdouctProvider extends Component {
 		products: this.props.products,
 		cart: [],
 		detailProduct: null,
-		cartTotal: 0
+		cartTotal: 0,
+		modalOpen: false,
+		modalProduct: null
 	};
 
 	componentDidMount() {
@@ -24,7 +26,6 @@ class PrdouctProvider extends Component {
 
 	setProducts = () => {
 		let products = [];
-		console.log(this.props.products);
 		this.props.products.forEach(product => {
 			const prod = { ...product };
 			products = [...products, prod];
@@ -51,7 +52,6 @@ class PrdouctProvider extends Component {
 	};
 
 	addItemToCart = id => {
-		console.log(id);
 		const product = this.getItem(id);
 		product.inCart = true;
 		product.count = 1;
@@ -113,7 +113,6 @@ class PrdouctProvider extends Component {
 	};
 
 	addTotals = () => {
-		console.log('addTotals');
 		let total = 0;
 		this.state.cart.forEach(product => (total += product.total));
 
@@ -163,6 +162,23 @@ class PrdouctProvider extends Component {
 		);
 	};
 
+	closeModal = () => {
+		this.setState(() => {
+			return {
+				modalOpen: false
+			};
+		});
+	};
+
+	openModal = id => {
+		const product = this.getItem(id);
+		this.setState(() => {
+			return {
+				modalProduct: product,
+				modalOpen: true
+			};
+		});
+	};
 	render() {
 		return (
 			<ProductContext.Provider
@@ -173,7 +189,9 @@ class PrdouctProvider extends Component {
 					removeItem: this.removeItem,
 					increment: this.increment,
 					decrement: this.decrement,
-					clearCart: this.clearCart
+					clearCart: this.clearCart,
+					openModal: this.openModal,
+					closeModal: this.closeModal
 				}}
 			>
 				{this.props.children}
