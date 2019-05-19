@@ -7,14 +7,33 @@ import { storeProducts } from './products';
 
 class PrdouctProvider extends Component {
 	constructor(props) {
+		console.log('The constructor');
 		super(props);
 	}
 
 	state = {
-		products: storeProducts,
+		products: this.props.products,
 		cart: [],
 		detailProduct: null,
 		cartTotal: 0
+	};
+
+	componentDidMount() {
+		this.setProducts();
+	}
+
+	setProducts = () => {
+		let products = [];
+		console.log(this.props.products);
+		this.props.products.forEach(product => {
+			const prod = { ...product };
+			products = [...products, prod];
+		});
+		this.setState(() => {
+			return {
+				products
+			};
+		});
 	};
 
 	getItem = id => {
@@ -130,6 +149,20 @@ class PrdouctProvider extends Component {
 		);
 	};
 
+	clearCart = () => {
+		this.setState(
+			() => {
+				return {
+					cart: [],
+					cartTotal: 0
+				};
+			},
+			() => {
+				this.setProducts();
+			}
+		);
+	};
+
 	render() {
 		return (
 			<ProductContext.Provider
@@ -139,7 +172,8 @@ class PrdouctProvider extends Component {
 					addItemToCart: this.addItemToCart,
 					removeItem: this.removeItem,
 					increment: this.increment,
-					decrement: this.decrement
+					decrement: this.decrement,
+					clearCart: this.clearCart
 				}}
 			>
 				{this.props.children}
