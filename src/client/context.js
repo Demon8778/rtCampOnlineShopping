@@ -14,7 +14,7 @@ class PrdouctProvider extends Component {
 	state = {
 		products: this.props.products,
 		cart: [],
-		detailProduct: null,
+		detailProduct,
 		cartTotal: 0,
 		modalOpen: false,
 		modalProduct: null

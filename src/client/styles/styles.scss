@@ -99,45 +99,45 @@ body {
 	#modal {
 		background: $mainWhite;
 	}
+}
 
-	.btn-cart {
-		text-transform: capitalize;
-		font-size: 1.4rem;
-		background: transparent;
-		border: 0.05rem solid $mainYellow;
-		color: $mainYellow;
-		border-radius: 0.1rem;
-		padding: 0.2rem 0.5rem;
-		cursor: pointer;
-		margin: 0.2rem 0.5rem;
-		transition: all 0.005s ease-in-out;
-		&:hover {
-			background: $mainYellow;
-			color: $mainWhite;
-			border-color: $mainWhite;
-		}
-		&:focus {
-			outline: none;
-		}
+.btn-cart {
+	text-transform: capitalize;
+	font-size: 1.4rem;
+	background: transparent;
+	border: 0.05rem solid $mainYellow;
+	color: $mainYellow;
+	border-radius: 0.1rem;
+	padding: 0.2rem 0.5rem;
+	cursor: pointer;
+	margin: 0.2rem 0.5rem;
+	transition: all 0.005s ease-in-out;
+	&:hover {
+		background: $mainYellow;
+		color: $mainWhite;
+		border-color: $mainWhite;
 	}
-	.cart-btn {
-		text-transform: capitalize;
-		font-size: 1.4rem;
-		background: transparent;
-		border: 0.05rem solid $mainBlue;
-		color: $mainBlue;
-		cursor: pointer;
-		border-radius: 0.1rem;
-		padding: 0.2rem 0.5rem;
-		margin: 0.2rem 0.5rem;
-		transition: all 0.005s ease-in-out;
-		&:hover {
-			color: $mainWhite;
-			border-color: $mainWhite;
-			background: $mainBlue;
-		}
-		&:focus {
-			outline: none;
-		}
+	&:focus {
+		outline: none;
+	}
+}
+.cart-btn {
+	text-transform: capitalize;
+	font-size: 1.4rem;
+	background: transparent;
+	border: 0.05rem solid $mainBlue;
+	color: $mainBlue;
+	cursor: pointer;
+	border-radius: 0.1rem;
+	padding: 0.2rem 0.5rem;
+	margin: 0.2rem 0.5rem;
+	transition: all 0.005s ease-in-out;
+	&:hover {
+		color: $mainWhite;
+		border-color: $mainWhite;
+		background: $mainBlue;
+	}
+	&:focus {
+		outline: none;
 	}
 }
