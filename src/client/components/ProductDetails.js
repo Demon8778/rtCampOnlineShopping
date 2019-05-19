@@ -45,7 +45,9 @@ export default class ProductDetails extends Component {
 									<p className="text-muted lead">{info}</p>
 									<div className="">
 										<Link to="/">
-											<button className="cart-btn">Back to products</button>
+											<button className="store text-capitalize">
+												Back to products
+											</button>
 										</Link>
 										<button
 											className="btn-cart"
