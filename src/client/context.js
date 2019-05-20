@@ -6,7 +6,6 @@ const ProductContext = React.createContext();
 class PrdouctProvider extends Component {
 	constructor(props) {
 		super(props);
-		console.log(this.props.products);
 	}
 
 	state = {
@@ -36,7 +35,7 @@ class PrdouctProvider extends Component {
 	};
 
 	getItem = id => {
-		const product = this.state.products.find(product => product.id === id);
+		const product = this.state.products.find(product => product._id === id);
 		return product;
 	};
 
@@ -50,7 +49,9 @@ class PrdouctProvider extends Component {
 	};
 
 	addItemToCart = id => {
+		// console.log('addItemToCart', id);
 		const product = this.getItem(id);
+		// console.log('addItemToCart', product);
 		product.inCart = true;
 		product.count = 1;
 		const price = product.price;
@@ -70,7 +71,7 @@ class PrdouctProvider extends Component {
 
 	increment = id => {
 		const tempCart = [...this.state.cart];
-		const product = tempCart.find(product => product.id === id);
+		const product = tempCart.find(product => product._id === id);
 
 		product.count++;
 		product.total = product.price * product.count;
@@ -89,7 +90,7 @@ class PrdouctProvider extends Component {
 
 	decrement = id => {
 		const tempCart = [...this.state.cart];
-		const product = tempCart.find(product => product.id === id);
+		const product = tempCart.find(product => product._id === id);
 
 		if (product.count === 1) {
 			this.removeItem(id);
@@ -122,8 +123,6 @@ class PrdouctProvider extends Component {
 	};
 
 	removeItem = id => {
-		console.log('removeItem');
-
 		let tempCart = [...this.state.cart];
 
 		const product = this.getItem(id);
@@ -132,7 +131,7 @@ class PrdouctProvider extends Component {
 		product.count = 0;
 		product.total = 0;
 
-		tempCart = tempCart.filter(product => product.id !== id);
+		tempCart = tempCart.filter(product => product._id !== id);
 
 		this.setState(
 			() => {

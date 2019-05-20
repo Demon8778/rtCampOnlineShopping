@@ -1,7 +1,7 @@
 import React from 'react';
 
 export default ({ product, value }) => {
-	const { id, title, img, price, total, count } = product;
+	const { _id, title, img, price, total, count } = product;
 	// console.log(value);
 	const { removeItem, increment, decrement } = value;
 	return (
@@ -24,17 +24,17 @@ export default ({ product, value }) => {
 			</div>
 			<div className="col-10 mx-auto col-lg-2">
 				<div className="d-flex justify-content-center">
-					<span className="btn btn-black mx-1" onClick={() => decrement(id)}>
+					<span className="btn btn-black mx-1" onClick={() => decrement(_id)}>
 						-
 					</span>
 					<span className="btn btn-black mx-1">{count}</span>
-					<span className="btn btn-black mx-1" onClick={() => increment(id)}>
+					<span className="btn btn-black mx-1" onClick={() => increment(_id)}>
 						+
 					</span>
 				</div>
 			</div>
 			<div className="col-10 mx-auto col-lg-2">
-				<div className="cart-icon" onClick={() => removeItem(id)}>
+				<div className="cart-icon" onClick={() => removeItem(_id)}>
 					<i className="fas fa-trash" />
 				</div>
 			</div>
