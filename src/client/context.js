@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 
 const ProductContext = React.createContext();
-//Provider and Consumer logic
 
 class PrdouctProvider extends Component {
 	constructor(props) {
@@ -14,7 +13,10 @@ class PrdouctProvider extends Component {
 		detailProduct: null,
 		cartTotal: 0,
 		modalOpen: false,
-		modalProduct: null
+		modalProduct: null,
+		searchByName: '',
+		searchByCategory: '',
+		categories: ['Mobiles', 'Clothes', 'Books', 'Groceries', 'Sports']
 	};
 
 	componentDidMount() {
@@ -37,6 +39,24 @@ class PrdouctProvider extends Component {
 	getItem = id => {
 		const product = this.state.products.find(product => product._id === id);
 		return product;
+	};
+
+	onSearchByName = text => {
+		console.log('OnSearchByName', text);
+		this.setState(() => {
+			return {
+				searchByName: text
+			};
+		});
+	};
+
+	onSearchByCategory = value => {
+		console.log('OnSearchByCategory', value);
+		this.setState(() => {
+			return {
+				searchByCategory: value
+			};
+		});
 	};
 
 	handleDetail = id => {
@@ -188,7 +208,9 @@ class PrdouctProvider extends Component {
 					decrement: this.decrement,
 					clearCart: this.clearCart,
 					openModal: this.openModal,
-					closeModal: this.closeModal
+					closeModal: this.closeModal,
+					onSearchByName: this.onSearchByName,
+					onSearchByCategory: this.onSearchByCategory
 				}}
 			>
 				{this.props.children}

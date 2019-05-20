@@ -34,6 +34,10 @@ const productSchema = new Schema({
 	company: {
 		type: String,
 		required: true
+	},
+	category: {
+		type: String,
+		required: true
 	}
 });
 

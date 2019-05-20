@@ -10,6 +10,7 @@ import { StaticRouter } from 'react-router-dom';
 import Product from './models/product';
 import Routes from './client/Routes';
 import { PrdouctProvider } from './client/context';
+// import { storeProducts } from './data';
 
 const app = express();
 
