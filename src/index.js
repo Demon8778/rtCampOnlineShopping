@@ -1,21 +1,44 @@
+require('babel-polyfill');
 import express from 'express';
+import mongoose from 'mongoose';
 import React from 'react';
 import { renderToString } from 'react-dom/server';
 import serialize from 'serialize-javascript';
 import StyleContext from 'isomorphic-style-loader/StyleContext';
 import { StaticRouter } from 'react-router-dom';
 
+import Product from './models/product';
 import Routes from './client/Routes';
 import { PrdouctProvider } from './client/context';
-import { storeProducts } from './client/products';
 
 const app = express();
+
+mongoose.connect('mongodb://127.0.0.1:27017/rtcamp-products-database', {
+	useNewUrlParser: true
+});
 
 const PORT = process.env.PORT || 3000;
 
 app.use(express.static('public'));
 
-app.get('*', (req, res) => {
+// app.use('/addproducts', (req, res) => {
+// 	storeProducts.forEach(product => {
+// 		console.log(product.title);
+// 		new Product(product)
+// 			.save()
+// 			.then(result => {
+// 				console.log('product is created');
+// 			})
+// 			.catch(err => {
+// 				console.log(err);
+// 			});
+// 	});
+// 	res.status(200).send('Products are stored');
+// });
+
+app.get('*', async (req, res) => {
+	const products = await Product.find();
+
 	const css = new Set();
 	const insertCss = (...styles) =>
 		styles.forEach(style => css.add(style._getCss()));
@@ -23,7 +46,7 @@ app.get('*', (req, res) => {
 	const app = renderToString(
 		<StyleContext.Provider value={{ insertCss }}>
 			<StaticRouter location={req.url} context={{}}>
-				<PrdouctProvider products={storeProducts}>
+				<PrdouctProvider products={products}>
 					<Routes />
 				</PrdouctProvider>
 			</StaticRouter>
@@ -45,7 +68,7 @@ app.get('*', (req, res) => {
 			</head>
 			<body>
 				<div id="root">${app}</div>
-				<script>window.__INITIAL_DATA__ = ${serialize(storeProducts)}</script>
+				<script>window.__INITIAL_DATA__ = ${serialize(products)}</script>
 				<script src="bundle.js"></script>
 			</body>
 		</html>

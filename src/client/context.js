@@ -1,20 +1,18 @@
 import React, { Component } from 'react';
-import window from 'global/window';
 
 const ProductContext = React.createContext();
-import { storeProducts, detailProduct } from './products';
 //Provider and Consumer logic
 
 class PrdouctProvider extends Component {
 	constructor(props) {
-		console.log('The constructor');
 		super(props);
+		console.log(this.props.products);
 	}
 
 	state = {
 		products: this.props.products,
 		cart: [],
-		detailProduct,
+		detailProduct: null,
 		cartTotal: 0,
 		modalOpen: false,
 		modalProduct: null
