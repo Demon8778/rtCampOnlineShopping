@@ -37,6 +37,11 @@ app.use(express.static('public'));
 // 	res.status(200).send('Products are stored');
 // });
 
+app.get('/products', async (req, res) => {
+	const products = await Product.find();
+	res.send(products);
+});
+
 app.get('*', async (req, res) => {
 	const products = await Product.find();
 

@@ -141,3 +141,15 @@ body {
 		outline: none;
 	}
 }
+
+#searchbyname {
+	&:focus {
+		outline: none;
+	}
+}
+
+#searchbycategory {
+	&:focus {
+		outline: none;
+	}
+}

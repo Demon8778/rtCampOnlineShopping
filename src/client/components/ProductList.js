@@ -10,9 +10,7 @@ export default class ProductList extends Component {
 			<React.Fragment>
 				<div className="container">
 					<h2>Our Products</h2>
-					<div className="row">
-						<Search />
-					</div>
+					<Search />
 					<div className="row">
 						<ProductConsumer>
 							{value => {
@@ -25,9 +23,6 @@ export default class ProductList extends Component {
 								}
 								return tempProducts.map(product => {
 									const search = value.searchByName.toLowerCase();
-
-									// console.log(category);
-									console.log(product.category, category);
 									if (
 										search !== '' &&
 										product.title.toLowerCase().indexOf(search) === -1

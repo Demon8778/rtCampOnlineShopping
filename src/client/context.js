@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 
 const ProductContext = React.createContext();
 
 class PrdouctProvider extends Component {
 	constructor(props) {
 		super(props);
+		// console.log(this.props.products);
 	}
 
 	state = {
@@ -19,22 +21,22 @@ class PrdouctProvider extends Component {
 		categories: ['Mobiles', 'Clothes', 'Books', 'Groceries', 'Sports']
 	};
 
-	componentDidMount() {
-		this.setProducts();
-	}
+	// componentDidMount() {
+	// 	this.setProducts();
+	// }
 
-	setProducts = () => {
-		let products = [];
-		this.props.products.forEach(product => {
-			const prod = { ...product };
-			products = [...products, prod];
-		});
-		this.setState(() => {
-			return {
-				products
-			};
-		});
-	};
+	// setProducts = () => {
+	// 	let products = [];
+	// 	this.props.products.forEach(product => {
+	// 		const prod = { ...product };
+	// 		products = [...products, prod];
+	// 	});
+	// 	this.setState(() => {
+	// 		return {
+	// 			products
+	// 		};
+	// 	});
+	// };
 
 	getItem = id => {
 		const product = this.state.products.find(product => product._id === id);
@@ -51,7 +53,7 @@ class PrdouctProvider extends Component {
 	};
 
 	onSearchByCategory = value => {
-		console.log('OnSearchByCategory', value);
+		// console.log('OnSearchByCategory', value);
 		this.setState(() => {
 			return {
 				searchByCategory: value
@@ -165,18 +167,15 @@ class PrdouctProvider extends Component {
 		);
 	};
 
-	clearCart = () => {
-		this.setState(
-			() => {
-				return {
-					cart: [],
-					cartTotal: 0
-				};
-			},
-			() => {
-				this.setProducts();
-			}
-		);
+	clearCart = async () => {
+		const { data } = await axios.get('http://localhost:3000/products');
+		this.setState(() => {
+			return {
+				cart: [],
+				cartTotal: 0,
+				products: data
+			};
+		});
 	};
 
 	closeModal = () => {
