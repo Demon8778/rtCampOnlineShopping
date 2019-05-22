@@ -11,14 +11,11 @@ export default () => {
 						<React.Fragment>
 							<form>
 								<div className="text-center">
-									<h5 className="mb-1">Refine your products</h5>
+									<h6 className="mb-3">Refine your products</h6>
 								</div>
 								<div className="form-row">
 									<div className="form-group col-md-6">
-										<label
-											className="form-label"
-											htmlFor="searchbyname"
-										>
+										<label className="form-label" htmlFor="searchbyname">
 											Search
 										</label>
 										<input
@@ -32,26 +29,18 @@ export default () => {
 										/>
 									</div>
 									<div className="form-group col-md-6">
-										<label
-											className="form-label"
-											htmlFor="searchbycategory"
-										>
+										<label className="form-label" htmlFor="searchbycategory">
 											Choose Category
 										</label>
 										<select
 											className="form-control shadow-none"
 											id="searchbycategory"
 											value={value.searchByCategory}
-											onChange={e =>
-												value.onSearchByCategory(e.target.value)
-											}
+											onChange={e => value.onSearchByCategory(e.target.value)}
 										>
 											<option value="">Choose...</option>
 											{value.categories.map(category => (
-												<option
-													key={category}
-													value={category.toLowerCase()}
-												>
+												<option key={category} value={category.toLowerCase()}>
 													{category}
 												</option>
 											))}

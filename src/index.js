@@ -10,7 +10,7 @@ import { StaticRouter } from 'react-router-dom';
 import Product from './models/product';
 import Routes from './client/Routes';
 import { PrdouctProvider } from './client/context';
-// import { storeProducts } from './data';
+import { storeProducts } from './data';
 
 const app = express();
 
@@ -22,20 +22,20 @@ const PORT = process.env.PORT || 3000;
 
 app.use(express.static('public'));
 
-// app.use('/addproducts', (req, res) => {
-// 	storeProducts.forEach(product => {
-// 		console.log(product.title);
-// 		new Product(product)
-// 			.save()
-// 			.then(result => {
-// 				console.log('product is created');
-// 			})
-// 			.catch(err => {
-// 				console.log(err);
-// 			});
-// 	});
-// 	res.status(200).send('Products are stored');
-// });
+app.use('/addproducts', (req, res) => {
+	storeProducts.forEach(product => {
+		console.log(product.title);
+		new Product(product)
+			.save()
+			.then(result => {
+				console.log('product is created');
+			})
+			.catch(err => {
+				console.log(err);
+			});
+	});
+	res.status(200).send('Products are stored');
+});
 
 app.get('/products', async (req, res) => {
 	const products = await Product.find();
@@ -63,6 +63,7 @@ app.get('*', async (req, res) => {
 		<html>
 			<head>
 				<title>rtCamp - Online Shopping</title>
+				<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
 				<link
 					rel="stylesheet"
 					href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"

@@ -6,7 +6,6 @@ const ProductContext = React.createContext();
 class PrdouctProvider extends Component {
 	constructor(props) {
 		super(props);
-		// console.log(this.props.products);
 	}
 
 	state = {

@@ -1,18 +1,18 @@
-$mainBlue: #2a2a72;
+$mainBlue: #2196f3;
 $lightBlue: #009ffd;
 $mainWhite: #f3f3f3;
-$mainDark: #232528;
+$mainDark: #212121;
 $mainYellow: #ffa400;
 
 body {
-	background: $mainWhite;
+	background: white;
 	color: $mainDark;
 }
 
 .navbar {
 	background: $mainBlue;
 	.nav-link {
-		color: $mainWhite;
+		color: white;
 		font-size: 1.3rem;
 		text-transform: capitalize;
 	}
@@ -20,17 +20,17 @@ body {
 		text-transform: capitalize;
 		font-size: 1.4rem;
 		background: transparent;
-		border: 0.05rem solid $mainYellow;
-		color: $mainYellow;
-		border-radius: 0.1rem;
+		border: 0.05rem solid white;
+		color: white;
+		// border-radius: 0.1rem;
 		padding: 0.2rem 0.5rem;
 		cursor: pointer;
 		margin: 0.2rem 0.5rem;
 		transition: all 0.005s ease-in-out;
 		&:hover {
-			background: $mainYellow;
-			color: $mainWhite;
-			border-color: $mainWhite;
+			background: white;
+			color: $mainBlue;
+			border-color: $mainBlue;
 		}
 		&:focus {
 			outline: none;
@@ -40,12 +40,13 @@ body {
 
 .product {
 	.card {
-		border-color: transparent;
+		background: $mainWhite;
+		// border-color: transparent;
 	}
 
 	.card-footer {
-		background: transparent;
-		border-top: transparent;
+		background: white;
+		// border-top: transparent;
 	}
 
 	.img-container {
@@ -137,18 +138,6 @@ body {
 		border-color: $mainWhite;
 		background: $mainBlue;
 	}
-	&:focus {
-		outline: none;
-	}
-}
-
-#searchbyname {
-	&:focus {
-		outline: none;
-	}
-}
-
-#searchbycategory {
 	&:focus {
 		outline: none;
 	}

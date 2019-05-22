@@ -9,7 +9,7 @@ export default class ProductDetails extends Component {
 			<ProductConsumer>
 				{value => {
 					const {
-						id,
+						_id,
 						company,
 						img,
 						info,
@@ -53,8 +53,8 @@ export default class ProductDetails extends Component {
 											className="btn-cart"
 											disabled={inCart ? true : false}
 											onClick={() => {
-												value.addItemToCart(id);
-												value.openModal(id);
+												value.addItemToCart(_id);
+												value.openModal(_id);
 											}}
 										>
 											{inCart ? 'in cart' : 'add to cart'}

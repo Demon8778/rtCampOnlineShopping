@@ -9,7 +9,9 @@ export default class ProductList extends Component {
 		return (
 			<React.Fragment>
 				<div className="container">
-					<h2>Our Products</h2>
+					<div className="text-center">
+						<h1 className="mt-2 mb-4">Our Products</h1>
+					</div>
 					<Search />
 					<div className="row">
 						<ProductConsumer>
