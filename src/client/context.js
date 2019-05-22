@@ -17,7 +17,8 @@ class PrdouctProvider extends Component {
 		modalProduct: null,
 		searchByName: '',
 		searchByCategory: '',
-		categories: ['Mobiles', 'Clothes', 'Books']
+		categories: ['Mobiles', 'Clothes', 'Books'],
+		successPurchase: false
 	};
 
 	// componentDidMount() {
@@ -194,6 +195,24 @@ class PrdouctProvider extends Component {
 			};
 		});
 	};
+
+	onPurchase = async () => {
+		console.log('onPurchase');
+		await this.clearCart();
+		this.setState(
+			{
+				successPurchase: true
+			},
+			() => {
+				setTimeout(() => {
+					this.setState({
+						successPurchase: false
+					});
+				}, 3000);
+			}
+		);
+	};
+
 	render() {
 		return (
 			<ProductContext.Provider
@@ -208,7 +227,8 @@ class PrdouctProvider extends Component {
 					openModal: this.openModal,
 					closeModal: this.closeModal,
 					onSearchByName: this.onSearchByName,
-					onSearchByCategory: this.onSearchByCategory
+					onSearchByCategory: this.onSearchByCategory,
+					onPurchase: this.onPurchase
 				}}
 			>
 				{this.props.children}

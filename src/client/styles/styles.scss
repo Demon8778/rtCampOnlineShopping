@@ -1,8 +1,9 @@
 $mainBlue: #2196f3;
-$lightBlue: #009ffd;
 $mainWhite: #f3f3f3;
 $mainDark: #212121;
 $mainYellow: #ffa400;
+$maindRed: #dc3545;
+$mainGreen: #28a745;
 
 body {
 	background: white;
@@ -45,14 +46,13 @@ body {
 }
 
 .product {
+	transition: all 0.01s ease-in-out;
 	.card {
 		background: $mainWhite;
-		// border-color: transparent;
 	}
 
 	.card-footer {
 		background: white;
-		// border-top: transparent;
 	}
 
 	.img-container {
@@ -79,24 +79,33 @@ body {
 			outline: none;
 		}
 	}
+
+	&:hover {
+		.card {
+			background: white;
+		}
+		.card-footer {
+			background: $mainWhite;
+		}
+	}
 }
 
 .cart-icon {
 	cursor: pointer;
 	font-size: 1.2rem;
-	color: $mainYellow;
+	color: $mainBlue;
 }
 
 .btn-black {
 	background: transparent;
 	font-size: 1rem;
-	color: $mainDark;
+	color: $mainBlue;
 	border-radius: 0;
-	border: 0.1rem solid $mainDark;
+	border: 0.05rem solid $mainBlue;
 	&:hover {
 		cursor: pointer;
-		background: $mainDark;
-		color: $mainWhite;
+		background: $mainBlue;
+		color: white;
 	}
 }
 
@@ -150,6 +159,47 @@ body {
 		color: $mainWhite;
 		border-color: $mainWhite;
 		background: $mainBlue;
+	}
+	&:focus {
+		outline: none;
+	}
+}
+
+.clear-cart {
+	text-transform: capitalize;
+	font-size: 1.4rem;
+	background: transparent;
+	border: 0.05rem solid $maindRed;
+	color: $maindRed;
+	cursor: pointer;
+	border-radius: 0.1rem;
+	padding: 0.2rem 0.5rem;
+	margin: 0.2rem 0.5rem;
+	transition: all 0.005s ease-in-out;
+	&:hover {
+		color: $mainWhite;
+		// border-color: $mainWhite;
+		background: $maindRed;
+	}
+	&:focus {
+		outline: none;
+	}
+}
+
+.checkout {
+	text-transform: capitalize;
+	font-size: 1.4rem;
+	background: transparent;
+	border: 0.05rem solid $mainGreen;
+	color: $mainGreen;
+	cursor: pointer;
+	border-radius: 0.1rem;
+	padding: 0.2rem 0.5rem;
+	margin: 0.2rem 0.5rem;
+	transition: all 0.005s ease-in-out;
+	&:hover {
+		color: $mainWhite;
+		background: $mainGreen;
 	}
 	&:focus {
 		outline: none;
