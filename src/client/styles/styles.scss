@@ -16,6 +16,12 @@ body {
 		font-size: 1.3rem;
 		text-transform: capitalize;
 	}
+
+	.nav-link__active {
+		color: white !important;
+		font-weight: bold;
+	}
+
 	.btn-cart {
 		text-transform: capitalize;
 		font-size: 1.4rem;
@@ -59,11 +65,18 @@ body {
 		bottom: 0;
 		right: 0;
 		padding: 0.2rem 0.4rem;
-		background: $lightBlue;
+		background: $mainBlue;
 		border: none;
-		color: $mainWhite;
+		color: white;
 		&:hover {
+			background: white;
 			color: $mainBlue;
+			border: 0.05rem solid $mainBlue;
+			border-right: none;
+			border-bottom: none;
+		}
+		&:focus {
+			outline: none;
 		}
 	}
 }

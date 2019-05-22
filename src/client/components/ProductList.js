@@ -13,7 +13,7 @@ export default class ProductList extends Component {
 						<h1 className="mt-2 mb-4">Our Products</h1>
 					</div>
 					<Search />
-					<div className="row">
+					<div className="row products">
 						<ProductConsumer>
 							{value => {
 								const category = value.searchByCategory;

@@ -21,7 +21,7 @@ export default ({ value }) => {
 						</div>
 						<h5>
 							<span>Total: </span>
-							<strong>$ {cartTotal}</strong>
+							<strong>&#x20b9;{cartTotal}</strong>
 						</h5>
 					</div>
 				</div>

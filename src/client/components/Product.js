@@ -18,8 +18,6 @@ export default class Product extends Component {
 										src={img}
 										alt="product"
 										className="card-img-top"
-										height="200px"
-										width="100px"
 										onClick={() => {
 											value.handleDetail(_id);
 										}}

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 // import 'bootstrap/dist/css/bootstrap.min.css';
 import logo from '../logo.svg';
 
@@ -17,9 +17,13 @@ export default () => {
 			</Link>
 			<ul className="navbar-nav align-items-center">
 				<li className="nav-item">
-					<Link to="/" className="nav-link">
+					<NavLink
+						to="/"
+						className="nav-link"
+						activeClassName="nav-link__active"
+					>
 						Products
-					</Link>
+					</NavLink>
 				</li>
 			</ul>
 			<Link to="/cart" className="ml-auto">

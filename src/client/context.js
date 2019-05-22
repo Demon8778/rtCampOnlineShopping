@@ -17,7 +17,7 @@ class PrdouctProvider extends Component {
 		modalProduct: null,
 		searchByName: '',
 		searchByCategory: '',
-		categories: ['Mobiles', 'Clothes', 'Books', 'Groceries', 'Sports']
+		categories: ['Mobiles', 'Clothes', 'Books']
 	};
 
 	// componentDidMount() {
