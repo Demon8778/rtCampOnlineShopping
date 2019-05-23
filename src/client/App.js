@@ -14,4 +14,4 @@ const App = props => {
 	);
 };
 
-export default withStyles(s)(App);
+export default App;
