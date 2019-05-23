@@ -1,3 +1,5 @@
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+
 module.exports = {
 	module: {
 		rules: [
@@ -20,7 +22,21 @@ module.exports = {
 			},
 			{
 				test: /\.(scss|css)$/,
-				use: ['isomorphic-style-loader', 'css-loader', 'sass-loader']
+				use: [
+					MiniCssExtractPlugin.loader,
+					{
+						loader: 'css-loader',
+						options: {
+							sourceMap: true
+						}
+					},
+					{
+						loader: 'sass-loader',
+						options: {
+							sourceMap: true
+						}
+					}
+				]
 			},
 			{
 				test: /\.svg$/,
@@ -30,5 +46,10 @@ module.exports = {
 				}
 			}
 		]
-	}
+	},
+	plugins: [
+		new MiniCssExtractPlugin({
+			filename: 'styles.css'
+		})
+	]
 };

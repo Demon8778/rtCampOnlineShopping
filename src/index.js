@@ -1,10 +1,8 @@
-require('babel-polyfill');
 import express from 'express';
 import mongoose from 'mongoose';
 import React from 'react';
 import { renderToString } from 'react-dom/server';
 import serialize from 'serialize-javascript';
-import StyleContext from 'isomorphic-style-loader/StyleContext';
 import { StaticRouter } from 'react-router-dom';
 
 import Product from './models/product';
@@ -45,18 +43,12 @@ app.get('/products', async (req, res) => {
 app.get('*', async (req, res) => {
 	const products = await Product.find();
 
-	const css = new Set();
-	const insertCss = (...styles) =>
-		styles.forEach(style => css.add(style._getCss()));
-
 	const app = renderToString(
-		<StyleContext.Provider value={{ insertCss }}>
-			<StaticRouter location={req.url} context={{}}>
-				<PrdouctProvider products={products}>
-					<Routes />
-				</PrdouctProvider>
-			</StaticRouter>
-		</StyleContext.Provider>
+		<StaticRouter location={req.url} context={{}}>
+			<PrdouctProvider products={products}>
+				<Routes />
+			</PrdouctProvider>
+		</StaticRouter>
 	);
 	const content = `
 		<!DOCTYPE html>
@@ -71,7 +63,8 @@ app.get('*', async (req, res) => {
 					crossorigin="anonymous"
 				/>
 				<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-				<style>${[...css].join('')}</style>
+				<link rel="stylesheet" type="text/css" href="styles.css" />
+				
 			</head>
 			<body>
 				<div id="root">${app}</div>
