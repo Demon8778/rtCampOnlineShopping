@@ -148,7 +148,7 @@ class PrdouctProvider extends Component {
 
 	clearCart = async () => {
 		const { data } = await axios.get(
-			'https://rtcamp-online-shopping.herokuapp.com//products'
+			'https://rtcamp-online-shopping.herokuapp.com/products'
 		);
 		this.setState(() => {
 			return {
