@@ -8,13 +8,16 @@ import { StaticRouter } from 'react-router-dom';
 import Product from './models/product';
 import Routes from './client/Routes';
 import { PrdouctProvider } from './client/context';
-// import { storeProducts } from './data';
+import { storeProducts } from './data';
 
 const app = express();
 
-mongoose.connect('mongodb://127.0.0.1:27017/rtcamp-products-database', {
-	useNewUrlParser: true
-});
+mongoose.connect(
+	'mongodb+srv://taskapp:Czr5FUJEFaC3yhF3@cluster0-ix3vz.mongodb.net/online-shopping-development?retryWrites=true',
+	{
+		useNewUrlParser: true
+	}
+);
 
 const PORT = process.env.PORT || 3000;
 

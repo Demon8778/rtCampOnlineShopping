@@ -1,0 +1,159 @@
+body {
+  background: white;
+  color: #212121; }
+
+.navbar {
+  background: #2196f3; }
+  .navbar .nav-link {
+    color: white;
+    font-size: 1.3rem;
+    text-transform: capitalize; }
+  .navbar .nav-link__active {
+    color: white !important;
+    font-weight: bold; }
+  .navbar .btn-cart {
+    text-transform: capitalize;
+    font-size: 1.4rem;
+    background: transparent;
+    border: 0.05rem solid white;
+    color: white;
+    padding: 0.2rem 0.5rem;
+    cursor: pointer;
+    margin: 0.2rem 0.5rem;
+    transition: all 0.005s ease-in-out; }
+    .navbar .btn-cart:hover {
+      background: white;
+      color: #2196f3;
+      border-color: #2196f3; }
+    .navbar .btn-cart:focus {
+      outline: none; }
+
+.product {
+  transition: all 0.01s ease-in-out; }
+  .product .card {
+    background: #f3f3f3; }
+  .product .card-footer {
+    background: white; }
+  .product .img-container {
+    position: relative;
+    overflow: hidden; }
+  .product .cart-btn {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    padding: 0.2rem 0.4rem;
+    background: #2196f3;
+    border: none;
+    color: white; }
+    .product .cart-btn:hover {
+      background: white;
+      color: #2196f3;
+      border: 0.05rem solid #2196f3;
+      border-right: none;
+      border-bottom: none; }
+    .product .cart-btn:focus {
+      outline: none; }
+  .product:hover .card {
+    background: white; }
+  .product:hover .card-footer {
+    background: #f3f3f3; }
+
+.cart-icon {
+  cursor: pointer;
+  font-size: 1.2rem;
+  color: #2196f3; }
+
+.btn-black {
+  background: transparent;
+  font-size: 1rem;
+  color: #2196f3;
+  border-radius: 0;
+  border: 0.05rem solid #2196f3; }
+  .btn-black:hover {
+    cursor: pointer;
+    background: #2196f3;
+    color: white; }
+
+.modal {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center; }
+  .modal #modal {
+    background: #f3f3f3; }
+
+.btn-cart {
+  text-transform: capitalize;
+  font-size: 1.4rem;
+  background: transparent;
+  border: 0.05rem solid #ffa400;
+  color: #ffa400;
+  border-radius: 0.1rem;
+  padding: 0.2rem 0.5rem;
+  cursor: pointer;
+  margin: 0.2rem 0.5rem;
+  transition: all 0.005s ease-in-out; }
+  .btn-cart:hover {
+    background: #ffa400;
+    color: #f3f3f3;
+    border-color: #f3f3f3; }
+  .btn-cart:focus {
+    outline: none; }
+
+.store {
+  text-transform: capitalize;
+  font-size: 1.4rem;
+  background: transparent;
+  border: 0.05rem solid #2196f3;
+  color: #2196f3;
+  cursor: pointer;
+  border-radius: 0.1rem;
+  padding: 0.2rem 0.5rem;
+  margin: 0.2rem 0.5rem;
+  transition: all 0.005s ease-in-out; }
+  .store:hover {
+    color: #f3f3f3;
+    border-color: #f3f3f3;
+    background: #2196f3; }
+  .store:focus {
+    outline: none; }
+
+.clear-cart {
+  text-transform: capitalize;
+  font-size: 1.4rem;
+  background: transparent;
+  border: 0.05rem solid #dc3545;
+  color: #dc3545;
+  cursor: pointer;
+  border-radius: 0.1rem;
+  padding: 0.2rem 0.5rem;
+  margin: 0.2rem 0.5rem;
+  transition: all 0.005s ease-in-out; }
+  .clear-cart:hover {
+    color: #f3f3f3;
+    background: #dc3545; }
+  .clear-cart:focus {
+    outline: none; }
+
+.checkout {
+  text-transform: capitalize;
+  font-size: 1.4rem;
+  background: transparent;
+  border: 0.05rem solid #28a745;
+  color: #28a745;
+  cursor: pointer;
+  border-radius: 0.1rem;
+  padding: 0.2rem 0.5rem;
+  margin: 0.2rem 0.5rem;
+  transition: all 0.005s ease-in-out; }
+  .checkout:hover {
+    color: #f3f3f3;
+    background: #28a745; }
+  .checkout:focus {
+    outline: none; }
+

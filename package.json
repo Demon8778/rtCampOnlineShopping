@@ -4,13 +4,14 @@
 	"description": "Demo project to showcase skills on ReactJS",
 	"main": "index.js",
 	"scripts": {
+		"start": "node build/bundle.js",
 		"dev": "npm-run-all --parallel dev:*",
 		"prod": "npm-run-all --parallel prod:*",
 		"dev:build-server": "webpack --config webpack.server.js --watch",
 		"dev:build-client": "webpack --config webpack.client.js --watch",
 		"dev:server": "nodemon build/bundle.js",
 		"test": "jest --watch",
-		"prod:builld-server": "webpack --mode production --config webpack.server.js",
+		"prod:build-server": "webpack --mode production --config webpack.server.js",
 		"prod:build-client": "webpack --mode production --config webpack.client.js"
 	},
 	"author": "Kirankumar Ahir",
