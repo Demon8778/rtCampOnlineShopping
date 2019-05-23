@@ -26,7 +26,7 @@ export default class ProductDetails extends Component {
 							</div>
 							<div className="row">
 								<div className="col-10 mx-auto col-md-6 my-3 text-center">
-									<img src={img} className="img-fluid" alt="product" />
+									<img src={img} className="img-fluid" alt={title} />
 								</div>
 								<div className="col-10 mx-auto col-md-6 my-3 text-capitalize">
 									<h4 className="text-title text-uppercase text-muted mt-3 mb-2">

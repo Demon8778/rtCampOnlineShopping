@@ -1,26 +1,25 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { ProductConsumer } from '../../context';
 
 export default () => {
 	return (
 		<ProductConsumer>
 			{value => {
-				const { clearCart, cartTotal, successPurchase, onPurchase } = value;
+				const { onRemove, cartTotal, onPurchase } = value;
 				return (
 					<React.Fragment>
 						<div className="container">
 							<div className="row">
 								<div className="mx-auto text-center">
 									<div className="btn-group">
-										<Link to="/">
+										<div>
 											<button
 												className="clear-cart mr-3"
-												onClick={() => value.clearCart()}
+												onClick={() => onRemove()}
 											>
 												Clear Cart
 											</button>
-										</Link>
+										</div>
 										<div className="mb-3">
 											<button
 												className="checkout"

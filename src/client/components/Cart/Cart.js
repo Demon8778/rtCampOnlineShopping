@@ -6,14 +6,14 @@ import CartColumns from './CartColumns';
 import CartList from './CartList';
 import CartTotals from './CartTotals';
 import SuccessAlert from './SuccessAlert';
+import DangerAlert from './DangerAlert';
 
 export default class Cart extends Component {
-	componentDidUpdate() {}
 	render() {
 		return (
 			<ProductConsumer>
 				{value => {
-					const { cart } = value;
+					const { cart, successPurchase, successRemove } = value;
 					if (cart.length > 0) {
 						return (
 							<React.Fragment>
@@ -26,7 +26,8 @@ export default class Cart extends Component {
 							</React.Fragment>
 						);
 					} else {
-						if (value.successPurchase) return <SuccessAlert />;
+						if (successPurchase) return <SuccessAlert />;
+						if (successRemove) return <DangerAlert />;
 						return <EmptyCart />;
 					}
 				}}

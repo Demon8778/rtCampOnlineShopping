@@ -18,7 +18,8 @@ class PrdouctProvider extends Component {
 		searchByName: '',
 		searchByCategory: '',
 		categories: ['Mobiles', 'Clothes', 'Books'],
-		successPurchase: false
+		successPurchase: false,
+		successRemove: false
 	};
 
 	getItem = id => {
@@ -27,27 +28,21 @@ class PrdouctProvider extends Component {
 	};
 
 	onSearchByName = text => {
-		this.setState(() => {
-			return {
-				searchByName: text
-			};
+		this.setState({
+			searchByName: text
 		});
 	};
 
 	onSearchByCategory = value => {
-		this.setState(() => {
-			return {
-				searchByCategory: value
-			};
+		this.setState({
+			searchByCategory: value
 		});
 	};
 
 	handleDetail = id => {
 		const product = this.getItem(id);
-		this.setState(() => {
-			return {
-				detailProduct: product
-			};
+		this.setState({
+			detailProduct: product
 		});
 	};
 
@@ -59,10 +54,8 @@ class PrdouctProvider extends Component {
 		product.total = price;
 
 		this.setState(
-			() => {
-				return {
-					cart: [...this.state.cart, product]
-				};
+			{
+				cart: [...this.state.cart, product]
 			},
 			() => {
 				this.addTotals();
@@ -78,10 +71,8 @@ class PrdouctProvider extends Component {
 		product.total = product.price * product.count;
 
 		this.setState(
-			() => {
-				return {
-					cart: tempCart
-				};
+			{
+				cart: tempCart
 			},
 			() => {
 				this.addTotals();
@@ -101,10 +92,8 @@ class PrdouctProvider extends Component {
 		product.total = product.price * product.count;
 
 		this.setState(
-			() => {
-				return {
-					cart: tempCart
-				};
+			{
+				cart: tempCart
 			},
 			() => {
 				this.addTotals();
@@ -116,10 +105,8 @@ class PrdouctProvider extends Component {
 		let total = 0;
 		this.state.cart.forEach(product => (total += product.total));
 
-		this.setState(() => {
-			return {
-				cartTotal: total
-			};
+		this.setState({
+			cartTotal: total
 		});
 	};
 
@@ -135,10 +122,8 @@ class PrdouctProvider extends Component {
 		tempCart = tempCart.filter(product => product._id !== id);
 
 		this.setState(
-			() => {
-				return {
-					cart: tempCart
-				};
+			{
+				cart: tempCart
 			},
 			() => {
 				this.addTotals();
@@ -148,32 +133,26 @@ class PrdouctProvider extends Component {
 
 	clearCart = async () => {
 		const { data } = await axios.get(
-			'https://rtcamp-online-shopping.herokuapp.com/products'
+			'http://rtcamp-online-shopping.herokuapp.com/products'
 		);
-		this.setState(() => {
-			return {
-				cart: [],
-				cartTotal: 0,
-				products: data
-			};
+		this.setState({
+			cart: [],
+			cartTotal: 0,
+			products: data
 		});
 	};
 
 	closeModal = () => {
-		this.setState(() => {
-			return {
-				modalOpen: false
-			};
+		this.setState({
+			modalOpen: false
 		});
 	};
 
 	openModal = id => {
 		const product = this.getItem(id);
-		this.setState(() => {
-			return {
-				modalProduct: product,
-				modalOpen: true
-			};
+		this.setState({
+			modalProduct: product,
+			modalOpen: true
 		});
 	};
 
@@ -187,6 +166,22 @@ class PrdouctProvider extends Component {
 				setTimeout(() => {
 					this.setState({
 						successPurchase: false
+					});
+				}, 3000);
+			}
+		);
+	};
+
+	onRemove = async () => {
+		await this.clearCart();
+		this.setState(
+			{
+				successRemove: true
+			},
+			() => {
+				setTimeout(() => {
+					this.setState({
+						successRemove: false
 					});
 				}, 3000);
 			}
@@ -208,7 +203,8 @@ class PrdouctProvider extends Component {
 					closeModal: this.closeModal,
 					onSearchByName: this.onSearchByName,
 					onSearchByCategory: this.onSearchByCategory,
-					onPurchase: this.onPurchase
+					onPurchase: this.onPurchase,
+					onRemove: this.onRemove
 				}}
 			>
 				{this.props.children}

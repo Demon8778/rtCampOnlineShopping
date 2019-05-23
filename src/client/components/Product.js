@@ -17,7 +17,7 @@ class Product extends Component {
 								<Link to="/details">
 									<img
 										src={img}
-										alt="product"
+										alt={title}
 										className="card-img-top"
 										onClick={() => {
 											value.handleDetail(_id);
@@ -32,7 +32,7 @@ class Product extends Component {
 											console.log(this.props);
 										}}
 									>
-										Go to cart
+										Go To Cart
 									</button>
 								) : (
 									<button
