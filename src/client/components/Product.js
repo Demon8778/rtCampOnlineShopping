@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 
 import { ProductConsumer } from '../context';
 
-export default class Product extends Component {
+class Product extends Component {
 	render() {
 		const { _id, title, img, price, inCart } = this.props.product;
 
@@ -23,22 +24,27 @@ export default class Product extends Component {
 										}}
 									/>
 								</Link>
-								<button
-									className="cart-btn"
-									disabled={inCart ? true : false}
-									onClick={() => {
-										value.addItemToCart(_id);
-										value.openModal(_id);
-									}}
-								>
-									{inCart ? (
-										<p className="text-capitalize mb-0" disabled>
-											in cart
-										</p>
-									) : (
+								{inCart ? (
+									<button
+										className="product-btn__cart"
+										onClick={() => {
+											this.props.history.push('/cart');
+											console.log(this.props);
+										}}
+									>
+										Go to cart
+									</button>
+								) : (
+									<button
+										className="product-btn__add"
+										onClick={() => {
+											value.addItemToCart(_id);
+											value.openModal(_id);
+										}}
+									>
 										<i className="fas fa-cart-plus" />
-									)}
-								</button>
+									</button>
+								)}
 							</div>
 						)}
 					</ProductConsumer>
@@ -51,3 +57,5 @@ export default class Product extends Component {
 		);
 	}
 }
+
+export default withRouter(Product);

@@ -48,16 +48,28 @@ export default class ProductDetails extends Component {
 												Back to products
 											</button>
 										</Link>
-										<button
-											className="btn-cart"
-											disabled={inCart ? true : false}
-											onClick={() => {
-												value.addItemToCart(_id);
-												value.openModal(_id);
-											}}
-										>
-											{inCart ? 'in cart' : 'add to cart'}
-										</button>
+
+										{inCart ? (
+											<button
+												className="btn-cart"
+												onClick={() => {
+													this.props.history.push('/cart');
+													console.log(this.props);
+												}}
+											>
+												go to cart
+											</button>
+										) : (
+											<button
+												className="btn-cart"
+												onClick={() => {
+													value.addItemToCart(_id);
+													value.openModal(_id);
+												}}
+											>
+												add to cart
+											</button>
+										)}
 									</div>
 								</div>
 							</div>
