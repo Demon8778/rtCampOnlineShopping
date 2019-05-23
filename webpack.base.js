@@ -51,5 +51,6 @@ module.exports = {
 		new MiniCssExtractPlugin({
 			filename: 'styles.css'
 		})
-	]
+	],
+	devtool: 'inline-source-map'
 };

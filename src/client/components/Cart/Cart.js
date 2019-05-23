@@ -21,8 +21,8 @@ export default class Cart extends Component {
 									<h1 className="mt-2 mb-4">Your Cart</h1>
 								</div>
 								<CartColumns />
-								<CartList value={value} />
-								<CartTotals value={value} />
+								<CartList />
+								<CartTotals />
 							</React.Fragment>
 						);
 					} else {

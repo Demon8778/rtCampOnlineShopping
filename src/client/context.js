@@ -21,30 +21,12 @@ class PrdouctProvider extends Component {
 		successPurchase: false
 	};
 
-	// componentDidMount() {
-	// 	this.setProducts();
-	// }
-
-	// setProducts = () => {
-	// 	let products = [];
-	// 	this.props.products.forEach(product => {
-	// 		const prod = { ...product };
-	// 		products = [...products, prod];
-	// 	});
-	// 	this.setState(() => {
-	// 		return {
-	// 			products
-	// 		};
-	// 	});
-	// };
-
 	getItem = id => {
 		const product = this.state.products.find(product => product._id === id);
 		return product;
 	};
 
 	onSearchByName = text => {
-		console.log('OnSearchByName', text);
 		this.setState(() => {
 			return {
 				searchByName: text
@@ -53,7 +35,6 @@ class PrdouctProvider extends Component {
 	};
 
 	onSearchByCategory = value => {
-		// console.log('OnSearchByCategory', value);
 		this.setState(() => {
 			return {
 				searchByCategory: value
@@ -71,9 +52,7 @@ class PrdouctProvider extends Component {
 	};
 
 	addItemToCart = id => {
-		// console.log('addItemToCart', id);
 		const product = this.getItem(id);
-		// console.log('addItemToCart', product);
 		product.inCart = true;
 		product.count = 1;
 		const price = product.price;
@@ -168,7 +147,9 @@ class PrdouctProvider extends Component {
 	};
 
 	clearCart = async () => {
-		const { data } = await axios.get('http://localhost:3000/products');
+		const { data } = await axios.get(
+			'https://rtcamp-online-shopping.herokuapp.com//products'
+		);
 		this.setState(() => {
 			return {
 				cart: [],
@@ -197,7 +178,6 @@ class PrdouctProvider extends Component {
 	};
 
 	onPurchase = async () => {
-		console.log('onPurchase');
 		await this.clearCart();
 		this.setState(
 			{
