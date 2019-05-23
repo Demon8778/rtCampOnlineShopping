@@ -5,9 +5,11 @@ $mainYellow: #ffa400;
 $maindRed: #dc3545;
 $mainGreen: #28a745;
 
+html,
 body {
 	background: white;
 	color: $mainDark;
+	height: 100%;
 }
 
 .navbar {
@@ -53,6 +55,7 @@ body {
 
 	.card-footer {
 		background: white;
+		height: 12.5vh;
 	}
 
 	.img-container {
